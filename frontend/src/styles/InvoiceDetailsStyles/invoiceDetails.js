@@ -6,6 +6,20 @@ const Section = styled.section`
   margin: 2rem auto;
   margin-top: 12vh;
 
+  .link{
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: all 200 ease;
+    img{
+      margin-right: 10px;
+    }
+    &:hover{
+      color: #888eb0;
+    }
+  }
+
   .id{
     font-weight: bold;
     font-size: 0.8rem;
@@ -15,6 +29,7 @@ const Section = styled.section`
     padding: 2rem;
     border-radius: 0.6rem;
     margin-bottom: 20px;
+    margin-top: 2rem;
   }
   .date{
     margin-right: 3rem;

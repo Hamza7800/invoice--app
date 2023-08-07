@@ -1,27 +1,14 @@
-import { useEffect, useState } from "react";
-import { useGetAllInvoicesQuery } from "../slices/invoicesApiSlice";
 import InvoiceItem from "./InvoiceItem";
-import FullScreenLoader from "./Loader";
+import { useSelector } from "react-redux";
 
 const Invoices = () => {
-  const { data: invoices, isLoading, error } = useGetAllInvoicesQuery();
-  console.log(invoices);
+  const { invoices } = useSelector((state) => state.invoices);
 
   const renderInvoices = invoices?.map((invoice) => (
     <InvoiceItem key={invoice._id} invoice={invoice} />
   ));
 
-  return (
-    <div style={{ color: "white" }}>
-      {error ? (
-        <>Error</>
-      ) : isLoading ? (
-        <FullScreenLoader />
-      ) : invoices ? (
-        <>{renderInvoices}</>
-      ) : null}
-    </div>
-  );
+  return <div style={{ color: "white" }}>{renderInvoices}</div>;
 };
 
 export default Invoices;

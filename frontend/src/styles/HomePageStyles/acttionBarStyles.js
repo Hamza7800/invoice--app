@@ -12,6 +12,7 @@ margin-top: 12vh;
     > h2 {
       font-weight: bold;
       font-size:1.4rem;
+      
     }
     > p{
       text-align: left;
@@ -42,9 +43,34 @@ margin-top: 12vh;
 
   .filter{
     cursor: pointer;
+    position: relative;
     > h2 {
       margin-right: 7px;
       font-size: .9rem;
+      img{
+        margin-left: 5px;
+      }
+    }
+  }
+  .filterSelect{
+  position: absolute;
+  /* right: 20px; */
+  left: -30px;
+  background-color: #1e2139;
+  box-shadow:0px 5px 5px #141625;
+  top:2rem;
+  padding: 15px;
+  border-radius: 0.4rem;
+  }
+
+  .input{
+    text-align: left;
+    width: 100px;
+    margin-bottom: 10px;
+    label{
+      margin-left: 15px;
+      font-size: 12px;
+      font-weight: bold;
     }
   }
 `;

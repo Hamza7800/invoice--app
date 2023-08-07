@@ -7,7 +7,6 @@ const InvoiceDetailsPage = () => {
   const { id: invoiceId } = useParams();
 
   const { data: invoice, isLoading, error } = useGetInvoiceByIdQuery(invoiceId);
-  console.log(invoice);
 
   return (
     <div style={{ color: "white" }}>

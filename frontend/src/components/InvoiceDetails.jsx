@@ -4,10 +4,16 @@ import {
   Section,
   ItemsContainer,
 } from "../styles/InvoiceDetailsStyles/invoiceDetails";
+import { Link } from "react-router-dom";
+import arrowBack from "../assets/icon-arrow-left.svg";
 
 const InvoiceDetails = ({ invoice }) => {
   return (
     <Section>
+      <Link to={"/"} className="link">
+        <img src={arrowBack} alt="" />
+        Go back
+      </Link>
       <div className="container">
         <FlexContainer justify={"space-between"} align={"center"}>
           <div className="subtitle" style={{ marginBottom: 0 }}>
