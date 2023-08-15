@@ -1,8 +1,26 @@
 import { styled } from 'styled-components';
 
+
+const DetailsPage = styled.div`
+  .transition{
+    pointer-events:visible;
+    transform: translateX(0);
+    /* transform: translateX(-100%); */
+    opacity: 100%;
+  }
+  
+  section::-webkit-scrollbar {
+    display: none;
+    pointer-events: none;
+  }
+`;
+
+
+
 const Section = styled.section`
   padding: 20px;
   width: 85%;
+  max-width: 800px;
   margin: 2rem auto;
   margin-top: 12vh;
 
@@ -49,6 +67,8 @@ const Section = styled.section`
     font-size: 0.7rem;
     line-height: 1.2rem;
   }
+
+  
 `;
 
 const ItemsContainer = styled.section`
@@ -80,4 +100,42 @@ const ItemsContainer = styled.section`
   }
 `;
 
-export { Section, ItemsContainer };
+const Buttons = styled.div`
+    position: fixed;
+    bottom: 0;
+    background-color: #1e2139;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    button{
+      padding: 15px 25px;
+      border: 0;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor:pointer;
+    }
+    .edit{
+      color: white;
+      transition:all 0.3s ease;
+      background-color: #141625;;
+      &:hover{
+        background-color: white;
+        color:black
+      }
+    }
+    .delete{
+      color: white;
+      transition:all 0.3s ease;
+      background-color:  #ec5757;
+      &:hover{
+        background-color: #ff9797;
+        color:white
+      }
+    }
+`;
+
+export { Section, ItemsContainer, DetailsPage, Buttons };

@@ -125,6 +125,10 @@ table {
   border-spacing: 0;
 }
 
+.overflow {
+  overflow: hidden;
+}
+
 body {
   font-family: "Spartan", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;

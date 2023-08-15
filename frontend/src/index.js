@@ -12,7 +12,7 @@ import App from './App';
 import HomePage from './pages/HomePage';
 import InvoiceDetailsPage from './pages/InvoiceDetailsPage';
 import './styles/index.css';
-
+import InvoiceForm from './components/InvoiceForm';
 
 
 const router = createBrowserRouter(

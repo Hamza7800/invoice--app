@@ -1,6 +1,7 @@
 import { FlexContainer } from "../styles/reusableStyles";
 import { Section, Status } from "../styles/HomePageStyles/invoiceItemStyles";
 import { useNavigate } from "react-router-dom";
+import arrowRight from "../assets/icon-arrow-right.svg";
 
 const InvoiceItem = ({ invoice }) => {
   const navigate = useNavigate();
@@ -10,14 +11,13 @@ const InvoiceItem = ({ invoice }) => {
       style={{ color: "white" }}
       onClick={() => navigate(`/invoice/${invoice._id}`)}
     >
-      <FlexContainer justify={"space-between"} className="nameId">
-        <div className="id">
-          <span className="hash">#</span>
-          <span>{invoice.id}</span>
-        </div>
-        <h2 className="name">{invoice.clientName}</h2>
-      </FlexContainer>
-      <FlexContainer justify={"space-between"} align={"center"}>
+      <div className="id-n-due-date">
+        <FlexContainer justify={"space-between"} className="nameId">
+          <div className="id">
+            <span className="hash">#</span>
+            <span>{invoice.customId}</span>
+          </div>
+        </FlexContainer>
         <div>
           <p className="due-date">
             Due{" "}
@@ -27,15 +27,19 @@ const InvoiceItem = ({ invoice }) => {
               day: "numeric",
             })}
           </p>
-          <p className="price">${invoice.total}</p>
         </div>
+      </div>
+      <h2 className="name">{invoice.clientName}</h2>
+      <div className="price-status">
+        <p className="price">${invoice.total}</p>
         <Status status={invoice.status}>
-          <FlexContainer justify={"space-between"} align={"center"}>
+          <FlexContainer justify={"center"} align={"center"}>
             <span className="circle"></span>
             <span className="status">{invoice.status}</span>
           </FlexContainer>
         </Status>
-      </FlexContainer>
+        <img src={arrowRight} className="img" alt="" />
+      </div>
     </Section>
   );
 };

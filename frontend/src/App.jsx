@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { setInvoices } from "./slices/invoiceSlice";
 import { useGetAllInvoicesQuery } from "./slices/invoicesApiSlice";
 import FullScreenLoader from "./components/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { data: invoices, isLoading, error } = useGetAllInvoicesQuery();
@@ -17,7 +19,7 @@ function App() {
   }, [invoices, dispatch]);
 
   return (
-    <h1 className="App">
+    <div className="App">
       <Navbar />
       {error ? (
         <>Error</>
@@ -26,7 +28,8 @@ function App() {
       ) : invoices ? (
         <>{<Outlet />}</>
       ) : null}
-    </h1>
+      <ToastContainer />
+    </div>
   );
 }
 

@@ -3,11 +3,11 @@ import arrowDown from "../assets/icon-arrow-down.svg";
 import iconPlus from "../assets/icon-plus.svg";
 import { Section } from "../styles/HomePageStyles/acttionBarStyles";
 import { FlexContainer } from "../styles/reusableStyles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterInvoices } from "../slices/invoiceSlice";
 import SelectFilterStatus from "./SelectFilterStatus";
 
-const ActionBar = () => {
+const ActionBar = ({ setShowForm }) => {
   const [showSelectFilter, setShowSelectFilter] = useState(false);
   const [checkboxStates, setCheckboxStates] = useState({
     paid: false,
@@ -15,6 +15,7 @@ const ActionBar = () => {
     pending: false,
   });
 
+  const { invoices } = useSelector((s) => s.invoices);
   const filterRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -62,7 +63,7 @@ const ActionBar = () => {
       >
         <div className="title">
           <h2>Invoices</h2>
-          <p>6 invoices</p>
+          <p>{invoices.length} invoices</p>
         </div>
         <FlexContainer justify={"space-between"} align={"center"}>
           <FlexContainer align={"center"} className="filter">
@@ -85,7 +86,11 @@ const ActionBar = () => {
               </div>
             )}
           </FlexContainer>
-          <FlexContainer align={"center"} className="addNewInvoice">
+          <FlexContainer
+            onClick={() => setShowForm(true)}
+            align={"center"}
+            className="addNewInvoice"
+          >
             <img src={iconPlus} alt="" />
             <h2>New</h2>
           </FlexContainer>

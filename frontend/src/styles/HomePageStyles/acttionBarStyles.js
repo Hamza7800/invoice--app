@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 const Section = styled.section`
-margin-top: 12vh;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 12vh;
   padding: 10px;
   color: white;
   margin-bottom: 20px;
+  max-width: 850px;
   .action-bar{
     padding: 25px;
   }
@@ -44,6 +48,7 @@ margin-top: 12vh;
   .filter{
     cursor: pointer;
     position: relative;
+    z-index: 20;
     > h2 {
       margin-right: 7px;
       font-size: .9rem;
@@ -72,6 +77,9 @@ margin-top: 12vh;
       font-size: 12px;
       font-weight: bold;
     }
+  }
+  @media (min-width: 1440px) {
+    margin-top: 2rem;
   }
 `;
 

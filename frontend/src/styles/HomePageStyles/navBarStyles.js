@@ -8,6 +8,12 @@ const Header = styled.header`
   height: 10vh;
   background-color: #252945;
   overflow: hidden;
+  @media (min-width: 1440px) {
+  width: 100px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  }
 `;
 
 const Nav = styled.nav`
@@ -15,6 +21,10 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  @media (min-width: 1440px) {
+    flex-direction: column;
+  }
+ 
 `;
 
 const LogoContainer = styled.div`
@@ -45,6 +55,11 @@ const LogoContainer = styled.div`
   &:hover > div{
     height: 90%;
   }
+
+  @media (min-width: 1440px) {
+  height:100px;
+  width: 100%;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -70,6 +85,31 @@ const ImageContainer = styled.div`
     width: 1px;
     height: 10vh;
     border-left: 1px solid white;
+  }
+
+  @media (min-width: 1440px) {
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  > div {
+    margin-left: 0px;
+  };
+  > div > img{
+    /* width: 30px; */
+    cursor: pointer;
+    border-radius: 999px;
+  }
+  .avatar{
+    margin-top: 20px;
+  };
+  .divider{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 45%;
+    transform: translateY(-50%);
+    border-top: 1px solid white;
+  }
   }
 `;
 
