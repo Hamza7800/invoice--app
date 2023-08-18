@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FlexContainer } from "../styles/reusableStyles";
 import { Status } from "../styles/HomePageStyles/invoiceItemStyles";
 import {
@@ -17,6 +16,7 @@ const InvoiceDetails = ({
   markedAsPaid,
   showModal,
   setShowModal,
+  setIsEditing,
 }) => {
   return (
     <>
@@ -135,7 +135,13 @@ const InvoiceDetails = ({
         </section>
       </Section>
       <Buttons className="invoiceDeatilsBtns">
-        <button onClick={() => setShowForm(true)} className="edit">
+        <button
+          onClick={() => {
+            setShowForm(true);
+            setIsEditing(true);
+          }}
+          className="edit"
+        >
           Edit
         </button>
 

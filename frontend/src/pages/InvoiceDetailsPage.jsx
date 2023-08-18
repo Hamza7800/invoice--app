@@ -30,12 +30,12 @@ const InvoiceDetailsPage = () => {
 
   const { refetch: allInvoice } = useGetAllInvoicesQuery();
 
-  const [markedAsPaid, { isLoading: loading }] = useMarkedAsPaidMutation();
+  const [markedAsPaid] = useMarkedAsPaidMutation();
   const [deleteInvoiceByID, { isLoading: loadingDelete }] =
     useDeleteInvoiceMutation();
 
   const [showForm, setShowForm] = useState(false);
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     if (showForm) {
@@ -47,7 +47,7 @@ const InvoiceDetailsPage = () => {
 
   const markedAsPaidInvoice = async () => {
     try {
-      const res = await markedAsPaid({ _id: invoiceId, status: "paid" });
+      await markedAsPaid({ _id: invoiceId, status: "paid" });
       refetch();
       allInvoice();
     } catch (err) {
@@ -57,8 +57,7 @@ const InvoiceDetailsPage = () => {
 
   const deleteInvoice = async (id) => {
     try {
-      const res = await deleteInvoiceByID({ _id: id });
-      console.log(res);
+      await deleteInvoiceByID({ _id: id });
       setShowModal(false);
       navigate("/");
       allInvoice();
@@ -84,6 +83,7 @@ const InvoiceDetailsPage = () => {
               setShowForm={setShowForm}
               showModal={showModal}
               setShowModal={setShowModal}
+              setIsEditing={setIsEditing}
             />
 
             <InvoiceForm

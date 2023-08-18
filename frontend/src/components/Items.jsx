@@ -1,18 +1,9 @@
 import { forwardRef, useEffect } from "react";
 import deleteIcon from "../assets/icon-delete.svg";
-import {
-  Controller,
-  useController,
-  useFormContext,
-  useWatch,
-} from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 
 function Items({ index, field, remove, control, invoice }) {
-  const {
-    register,
-    setValue,
-    formState: { errors },
-  } = useFormContext();
+  const { setValue } = useFormContext();
 
   const items = useWatch({
     control,
@@ -113,10 +104,10 @@ function Items({ index, field, remove, control, invoice }) {
 }
 
 const InputField = forwardRef(({ name, label, type, ...rest }, ref) => {
-  const { field } = useController({
-    name,
-    defaultValue: "",
-  });
+  // const {  } = useController({
+  //   name,
+  //   defaultValue: "",
+  // });
 
   return (
     <div className="input-field">

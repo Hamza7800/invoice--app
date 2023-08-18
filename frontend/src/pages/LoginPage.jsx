@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Section } from "../styles/loginPageStyles";
 import InputField from "../components/InputField";
@@ -11,7 +11,6 @@ import { useLoginMutation } from "../slices/userAuthApiSlice";
 import { passwordValidation, emailValidation } from "../utils/validations";
 
 const LoginPage = () => {
-  const [error, setError] = useState("");
   const methods = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,8 +24,6 @@ const LoginPage = () => {
       console.log(res);
       dispatch(setCredentials({ ...res }));
     } catch (err) {
-      console.log(err.data.message);
-      setError(err?.data?.message);
       toast.error(err.data.message);
     }
   };

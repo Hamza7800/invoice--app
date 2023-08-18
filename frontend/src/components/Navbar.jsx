@@ -1,5 +1,4 @@
 import logo from "../assets/logo.svg";
-import sunSvg from "../assets/icon-sun.svg";
 import imgAvatar from "../assets/image-avatar.jpg";
 // styles
 import {
@@ -19,7 +18,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
-  const [logoutUser, { isLoading }] = useLogoutMutation();
+  const [logoutUser] = useLogoutMutation();
 
   const logoutHandler = async () => {
     try {
@@ -40,9 +39,6 @@ const Navbar = () => {
           <div className="behind-logo"></div>
         </LogoContainer>
         <ImageContainer>
-          {/* <div>
-            <img src={sunSvg} alt="toogle-theme" />
-          </div> */}
           {userInfo ? (
             <h2 onClick={logoutHandler}>Logout</h2>
           ) : (

@@ -4,7 +4,7 @@ import { Section } from "../styles/loginPageStyles";
 import { emailValidation, passwordValidation } from "../utils/validations";
 import Button from "../components/Button";
 import { useRegisterMutation } from "../slices/userAuthApiSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import FullScreenLoader from "../components/Loader";
 import { toast } from "react-toastify";

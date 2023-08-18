@@ -1,4 +1,4 @@
-import { Outlet, Navigate, Link } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Home } from "../styles/HomePageStyles/homestyles";
 

@@ -4,8 +4,6 @@ import Invoices from "../components/Invoices";
 import InvoiceForm from "../components/InvoiceForm";
 import { Home } from "../styles/HomePageStyles/homestyles";
 import Overlay from "../components/Overlay";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setInvoices } from "../slices/invoiceSlice";
 import { useGetAllInvoicesQuery } from "../slices/invoicesApiSlice";
@@ -16,8 +14,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const [showForm, setShowForm] = useState(false);
-  const { userInfo } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (invoices) {
@@ -36,19 +32,10 @@ const HomePage = () => {
   return (
     <Home>
       {error ? <>Error</> : isLoading ? <FullScreenLoader /> : null}
-      {/* {userInfo ? (
-        <> */}
       <ActionBar setShowForm={setShowForm} />
       <Invoices />
       <InvoiceForm showForm={showForm} setShowForm={setShowForm} />
       {showForm && <Overlay onClose={() => setShowForm(false)} />}
-      {/* </> 
-       ) : ( */}
-      {/* <div className="no_invoices">
-          <p>Please Login to get your invoices</p>
-          <Link to={"/login"}>Login</Link>
-        </div> */}
-      {/* )} */}
     </Home>
   );
 };

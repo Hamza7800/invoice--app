@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { findInputError, isFormInvalid } from "../utils/errors";
-import { useFormContext, useWatch } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 const InputField = forwardRef(({ validation, ...args }, ref) => {
   const {

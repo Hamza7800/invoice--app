@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import InputField from "./InputField";
 import Items from "./Items.jsx";
-import addIcon from "../assets/icon-plus.svg";
 import Dropdown from "./DropDown";
-import { useForm, useFieldArray, Controller, useWatch } from "react-hook-form";
+import { useFieldArray } from "react-hook-form";
 
 const Form = ({
   createInvoice,
@@ -17,10 +16,10 @@ const Form = ({
   invoice,
 }) => {
   const [selection, setSelection] = useState(1);
-  const addItems = [{ name: "", quantity: "", price: "", total: 0 }];
-  const [newItemFields, setNewItemFields] = useState(
-    formData.items ? formData.items : addItems
-  );
+  // const addItems = [{ name: "", quantity: "", price: "", total: 0 }];
+  // const [newItemFields, setNewItemFields] = useState(
+  //   formData.items ? formData.items : addItems
+  // );
 
   // const inputFieldsValues = useWatch();
 
@@ -36,31 +35,6 @@ const Form = ({
       message: "required",
     },
   };
-
-  // const [formData, setFormData] = useState({
-  // customId: "",
-  // createdAt: date,
-  // paymentDue: new Date().toISOString().substr(0, 10),
-  // description: "",
-  // paymentTerms: 1,
-  // clientName: "",
-  // clientEmail: "",
-  // status: "",
-  // senderAddress: {
-  //   street: "",
-  //   city: "",
-  //   postCode: "",
-  //   country: "",
-  // },
-  // clientAddress: {
-  //   street: "",
-  //   city: "",
-  //   postCode: "",
-  //   country: "",
-  // },
-  // items: [],
-  // total: 100,
-  // });
 
   const options = [
     { label: "Net 1 Day", value: "1" },

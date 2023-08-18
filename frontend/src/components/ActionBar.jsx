@@ -52,7 +52,7 @@ const ActionBar = ({ setShowForm }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <Section>
