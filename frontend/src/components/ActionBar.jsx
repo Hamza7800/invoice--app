@@ -63,7 +63,7 @@ const ActionBar = ({ setShowForm }) => {
       >
         <div className="title">
           <h2>Invoices</h2>
-          <p>{invoices.length} invoices</p>
+          <p>{invoices?.length} invoices</p>
         </div>
         <FlexContainer justify={"space-between"} align={"center"}>
           <FlexContainer align={"center"} className="filter">

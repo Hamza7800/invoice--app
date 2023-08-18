@@ -66,6 +66,7 @@ const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 1rem;
+  position: relative;
   > div {
     margin-left: 20px;
   };
@@ -85,6 +86,19 @@ const ImageContainer = styled.div`
     width: 1px;
     height: 10vh;
     border-left: 1px solid white;
+  }
+  h2{
+    /* position: absolute; */
+    font-weight: bold;
+    color:white;
+    /* background-color: white; */
+    padding: 15px;
+    bottom: 0px;
+    z-index: 9999;
+    &:hover{
+      color: #7c5dfa;
+      cursor: pointer;
+    }
   }
 
   @media (min-width: 1440px) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { useDispatch } from "react-redux";
@@ -9,18 +9,18 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { data: invoices, isLoading, error } = useGetAllInvoicesQuery();
-  const dispatch = useDispatch();
+  // const { data: invoices, isLoading, error } = useGetAllInvoicesQuery();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (invoices) {
-      dispatch(setInvoices(invoices));
-    }
-  }, [invoices, dispatch]);
+  // useEffect(() => {
+  //   if (invoices) {
+  //     dispatch(setInvoices(invoices));
+  //   }
+  // }, [invoices, dispatch]);
 
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar />
       {error ? (
         <>Error</>
       ) : isLoading ? (
@@ -28,6 +28,10 @@ function App() {
       ) : invoices ? (
         <>{<Outlet />}</>
       ) : null}
+      <ToastContainer /> */}
+      <Navbar />
+
+      {<Outlet />}
       <ToastContainer />
     </div>
   );

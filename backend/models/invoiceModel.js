@@ -3,6 +3,11 @@ import addressSchema from './schemas/addressSchema.js';
 import itemsSchema from './schemas/itemsSchema.js';
 
 const invoiceSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
   customId: { type: String },
   createdAt: { type: Date },
   paymentDue: { type: Date },

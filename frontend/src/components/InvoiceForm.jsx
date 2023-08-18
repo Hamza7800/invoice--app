@@ -8,7 +8,7 @@ import {
   useUpdateEditedInvoiceMutation,
 } from "../slices/invoicesApiSlice";
 import Form from "./Form";
-// import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import generateUniqueId from "../utils/utils";
 import { invoiceData } from "../utils/formInputFieldsData";
 import Button from "./Button";
@@ -19,6 +19,7 @@ import FullScreenLoader from "./Loader";
 
 //  Component
 const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
+  const { userInfo } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState(
     editInvoice ? editInvoice : invoiceData
   );
@@ -44,12 +45,14 @@ const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
       (total, item) => total + item.total,
       0
     );
+    console.log(userInfo);
 
     try {
-      await invoice({ ...data, total: overallTotal });
+      await invoice({ ...data, total: overallTotal, user: userInfo._id });
       refetch();
       toast.success("Invoice created successfully");
     } catch (err) {
+      console.log(err?.data?.message);
       toast.error(err?.data?.message || err.error);
     }
   };
@@ -86,7 +89,7 @@ const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
     );
 
     try {
-      await updateInvoice({ ...data, total: overallTotal });
+      await updateInvoice({ ...data, total: overallTotal, user: userInfo._id });
       refetchUpdatedInvoice();
       refetch();
       toast.success(`Invoice ${data.customId} updated successfully`);

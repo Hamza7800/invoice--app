@@ -6,7 +6,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 // @route   GET '/api/invoice'
 // @access  Private
 const getAllInvoices = asyncHandler(async (req, res, next) => {
-  const invoices = await Invoice.find();
+  const invoices = await Invoice.find({ user: req.user._id });
   if (invoices) {
     res.json(invoices);
   } else {
