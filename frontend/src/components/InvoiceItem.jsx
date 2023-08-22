@@ -14,7 +14,7 @@ const InvoiceItem = ({ invoice }) => {
       <div className="id-n-due-date">
         <FlexContainer justify={"space-between"} className="nameId">
           <div className="id">
-            <span className="hash">#</span>
+{/*             <span className="hash">#</span> */}
             <span>{invoice.customId}</span>
           </div>
         </FlexContainer>
