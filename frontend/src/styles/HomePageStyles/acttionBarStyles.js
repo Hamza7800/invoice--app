@@ -9,6 +9,7 @@ const Section = styled.section`
   color: white;
   margin-bottom: 20px;
   max-width: 850px;
+ 
   .action-bar{
     padding: 25px;
   }
@@ -77,6 +78,22 @@ const Section = styled.section`
       font-size: 12px;
       font-weight: bold;
     }
+  }
+  @media (max-width: 480px){
+    margin-top:8vh;
+    .action-bar{
+    padding:8px;
+  }
+  .title{
+    > h2 {
+      font-size:1.1rem;
+      
+    }
+    > p{
+      font-size: .7rem;
+      margin-top: 8px;
+    }
+  }
   }
   @media (min-width: 1440px) {
     margin-top: 2rem;

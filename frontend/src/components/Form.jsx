@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import InputField from "./InputField";
 import Items from "./Items.jsx";
 import Dropdown from "./DropDown";
 import { useFieldArray } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
+
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // Adding 1 because getMonth() returns 0-11
+const day = currentDate.getDate().toString().padStart(2, "0");
 
 const Form = ({
   createInvoice,
@@ -15,18 +21,12 @@ const Form = ({
   control,
   invoice,
 }) => {
+  const date = `${year}-${month}-${day}`;
   const [selection, setSelection] = useState(1);
-  // const addItems = [{ name: "", quantity: "", price: "", total: 0 }];
-  // const [newItemFields, setNewItemFields] = useState(
-  //   formData.items ? formData.items : addItems
-  // );
-
-  // const inputFieldsValues = useWatch();
-
-  const date = new Date().toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const { setValue } = useFormContext();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "items",
   });
 
   const validation = {
@@ -35,6 +35,12 @@ const Form = ({
       message: "required",
     },
   };
+
+  const watchDate = useWatch({ name: "invoiceDate", defaultValue: date });
+
+  // useEffect(() => {
+  //   setValue("invoiceDate", watchDate);
+  // }, [watchDate, setValue, date]);
 
   const options = [
     { label: "Net 1 Day", value: "1" },
@@ -45,26 +51,20 @@ const Form = ({
 
   const handleSelection = (option) => {
     if (option !== selection) {
-      const today = new Date();
-      const futureDate = new Date(today);
-      futureDate.setDate(today.getDate() + Number(option.value));
+      const futureDate = new Date(currentDate);
+      futureDate.setDate(currentDate.getDate() + Number(option.value));
       const formattedFutureDate = futureDate.toISOString().substr(0, 10);
+      setValue("invoiceDate", formattedFutureDate);
 
       const updatedFormData = {
         ...formData,
         paymentDue: formattedFutureDate,
       };
-
       setFormData(updatedFormData);
       setSelection(option);
     }
     // setFormData({ ...formData, paymentTerms: Number(option.value) });
   };
-
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "items",
-  });
 
   return (
     <form onSubmit={(e) => e.preventDefault()} noValidate>
@@ -138,18 +138,17 @@ const Form = ({
           defaultValue={invoice ? invoice.clientEmail : ""}
         />
 
-        <InputField
-          control={control}
-          id={"clientStreetAddress"}
-          name={"clientAddressStreet"}
-          label={"Street Address"}
-          type={"text"}
-          validation={validation}
-          defaultValue={invoice ? invoice.clientAddress.street : ""}
-        />
-
         <div>
           <h3>Bill To</h3>
+          <InputField
+            control={control}
+            id={"clientStreetAddress"}
+            name={"clientAddressStreet"}
+            label={"Street Address"}
+            type={"text"}
+            validation={validation}
+            defaultValue={invoice ? invoice.clientAddress.street : ""}
+          />
           <div className="grid-container">
             <div className="c-p">
               <InputField
@@ -184,15 +183,34 @@ const Form = ({
           </div>
         </div>
 
-        <InputField
+        {/* <InputField
           control={control}
           id={"invoiceDate"}
           name={"invoiceDate"}
           label={"Invoice Date"}
           type="date"
           validation={validation}
-          defaultValue={invoice ? invoice.paymentDue : date}
+          defaultValue={
+            invoice
+              ? new Date(invoice.paymentDue).toISOString().split("T")[0]
+              : date
+          }
+        /> */}
+        <Controller
+          name={"invoiceDate"}
+          control={control}
+          defaultValue={watchDate}
+          render={({ field }) => (
+            <InputField
+              id={"invoiceDate"}
+              name={"invoiceDate"}
+              label={"Invoice Date"}
+              type="date"
+              {...field}
+            />
+          )}
         />
+
         <div>
           <label htmlFor="">Payment Terms</label>
           <Dropdown

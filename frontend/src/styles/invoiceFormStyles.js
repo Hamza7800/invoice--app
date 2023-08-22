@@ -14,7 +14,9 @@ const Section = styled.section`
   z-index: 1000;
   color:white;
   box-sizing: border-box;
-
+  @media (max-width: 480px){
+    top: 7vh;
+  }
   .link{
     color:white;
     text-decoration: none;
@@ -29,7 +31,7 @@ const Section = styled.section`
     }
   }
   h2{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight:bold;
     margin-left: 5%;
     margin-top: 30px;
@@ -48,7 +50,7 @@ const Section = styled.section`
   }
 
   form{
-    padding: 20px;
+    padding:0 20px;
     width: 90%;
     margin: 0 auto;
   }
@@ -114,12 +116,16 @@ const Section = styled.section`
     align-items: center;
     justify-content: end;
     box-sizing: border-box;
+    
     button{
       cursor: pointer;
       font-weight: bold;
       padding:15px 20px;
       border-radius: 2.5rem;
       border: 0;
+      @media (max-width: 480px){
+        font-size: 0.7rem;
+      }
     }
     .discard{
       color: white;

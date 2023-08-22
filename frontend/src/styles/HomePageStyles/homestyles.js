@@ -12,6 +12,13 @@ const Home = styled.section`
     display: none;
     pointer-events: none;
   }
+  .error{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+  }
 
   .no_invoices{
     position: absolute;
@@ -24,9 +31,11 @@ const Home = styled.section`
     flex-direction: column;
     font-weight: bold;
     p{
-      margin-bottom: 30px;
+      margin-bottom: 15px;
+      line-height: 25px;
+      text-align: center;
     }
-    a{
+    a{ 
       text-decoration: none;
       color: white;
     font-weight: bold;

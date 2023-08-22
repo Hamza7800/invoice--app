@@ -5,17 +5,21 @@ const Section = styled.section`
   margin: 0 auto;
   margin-top: 10vh;
   padding-top: 25px;
+  padding-bottom: 25px;
+  overflow-x: hidden;
   /* bottom: 0; */
   /* left: 0; */
   /* right: 0; */
   /* z-index: 1000; */
   max-width: 600px;
-
   color:white;
   box-sizing: border-box;
+  @media (max-width: 480px){
+    margin-top: 5vh;
+  }
 
   .link{
-    color:white;
+    color:#7c5dfa;
     text-decoration: none;
     font-weight: bold;
     font-size: 0.8rem;
@@ -24,11 +28,11 @@ const Section = styled.section`
       margin-right: 10px;
     }
     &:hover{
-      color: #888eb0;
+      color: #9277ff;
     }
   }
   h2{
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     font-weight:bold;
     margin-left: 5%;
     margin-top: 30px;
@@ -77,7 +81,7 @@ const Section = styled.section`
     border: 0;
     cursor: pointer;
     background-color: #1e2139;
-    padding: 20px 30px;
+    padding: 10px 20px;
     font-size: 20px;
     text-align: right;
     box-sizing: border-box;

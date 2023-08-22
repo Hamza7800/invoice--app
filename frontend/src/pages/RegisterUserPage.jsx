@@ -43,7 +43,6 @@ const RegisterUserPage = () => {
       toast.success("Account created successfully");
       navigate("/");
     } catch (err) {
-      console.log(err.data.message);
       toast.error(err?.data?.message || err?.error);
     }
   });
@@ -51,7 +50,7 @@ const RegisterUserPage = () => {
   return (
     <FormProvider {...methods}>
       <Section>
-        <h2>Login</h2>
+        <h2>Create Account</h2>
         <form onSubmit={(e) => e.preventDefault()}>
           <InputField
             control={methods.control}
@@ -99,8 +98,11 @@ const RegisterUserPage = () => {
             Create Account
           </Button>
         </form>
-        <h2 style={{ fontSize: "1rem" }}>
-          Already have an account <Link to="/login">Login now</Link>
+        <h2 style={{ fontSize: ".9rem" }}>
+          Already have an account?
+          <Link to="/login" className="link">
+            Login now
+          </Link>
         </h2>
       </Section>
       <>{isLoading && <FullScreenLoader />}</>

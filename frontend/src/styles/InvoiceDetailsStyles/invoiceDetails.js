@@ -20,9 +20,10 @@ const DetailsPage = styled.div`
 const Section = styled.section`
   padding: 20px;
   width: 85%;
-  max-width: 800px;
+  max-width: 750px;
   margin: 2rem auto;
   margin-top: 12vh;
+  margin-bottom: 4rem;
 
   .link{
     color:white;
@@ -48,6 +49,10 @@ const Section = styled.section`
     border-radius: 0.6rem;
     margin-bottom: 20px;
     margin-top: 2rem;
+    .id_address{
+      display: flex;
+      flex-direction: column;
+    }
   }
   .date{
     margin-right: 3rem;
@@ -68,7 +73,39 @@ const Section = styled.section`
     line-height: 1.2rem;
   }
 
+  @media (max-width: 480px){
+    padding: 0px;
+    width: 95%;
+    margin:2rem auto;
+    margin-top: 10vh;
+    margin-bottom: 7rem;
+      .container{
+      padding: 1.3rem;
+    }
+  }
   
+  @media (min-width: 768px){
+    .container{
+      .id_address{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .adrs{
+          width: 250px;
+        }
+      }
+    }
+    .subtitle{
+    margin-bottom: 13px;
+    font-size: 0.7rem;
+    line-height: 1.2rem;
+  }
+  }
+  
+  
+  @media (min-width: 1440px){
+    margin-top: 4vh;
+  }
 `;
 
 const ItemsContainer = styled.section`
@@ -78,6 +115,7 @@ const ItemsContainer = styled.section`
   font-weight: bold;
   font-size: 0.8rem;
   padding-top: 1rem;
+ 
   h2 {
     margin-bottom: 20px;
   }

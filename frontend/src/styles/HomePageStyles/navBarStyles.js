@@ -8,6 +8,9 @@ const Header = styled.header`
   height: 10vh;
   background-color: #252945;
   overflow: hidden;
+  @media (max-width: 480px){
+    height: 7vh;
+  }
   @media (min-width: 1440px) {
   width: 100px;
   top: 0;
@@ -39,6 +42,9 @@ const LogoContainer = styled.div`
   border-bottom-right-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  @media (max-width: 480px){
+    width:4rem;
+  }
   > img {
     z-index: 99;
   }
@@ -87,13 +93,14 @@ const ImageContainer = styled.div`
     height: 10vh;
     border-left: 1px solid white;
   }
-  h2{
-    /* position: absolute; */
+ 
+  button{
     font-weight: bold;
     color:white;
-    /* background-color: white; */
-    padding: 15px;
+    background-color:transparent;
+    border: none;
     bottom: 0px;
+    font-size: 16px;
     z-index: 9999;
     &:hover{
       color: #7c5dfa;

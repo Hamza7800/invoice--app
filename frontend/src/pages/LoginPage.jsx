@@ -21,7 +21,6 @@ const LoginPage = () => {
     const { email, password } = data;
     try {
       const res = await login({ email, password }).unwrap();
-      console.log(res);
       dispatch(setCredentials({ ...res }));
     } catch (err) {
       toast.error(err.data.message);
@@ -69,8 +68,11 @@ const LoginPage = () => {
             Login
           </Button>
         </form>
-        <h2 style={{ fontSize: "1rem" }}>
-          Don't have an account <Link to="/create-account">Create now</Link>
+        <h2 style={{ fontSize: ".9rem" }}>
+          Don't have an account?{" "}
+          <Link to="/create-account" className="link">
+            Create now
+          </Link>
         </h2>
       </Section>
       {/* <>{isLoading && <FullScreenLoader />}</> */}

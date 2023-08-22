@@ -63,7 +63,7 @@ const InvoiceDetailsPage = () => {
       allInvoice();
       toast.success(`Invoice with id${invoice.customId} deleted`);
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong");
     }
   };
 

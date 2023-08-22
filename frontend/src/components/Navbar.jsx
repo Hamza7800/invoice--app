@@ -27,7 +27,7 @@ const Navbar = () => {
       navigate("/login");
       toast.success("Logged out successfully");
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong");
     }
   };
 
@@ -40,9 +40,9 @@ const Navbar = () => {
         </LogoContainer>
         <ImageContainer>
           {userInfo ? (
-            <h2 onClick={logoutHandler}>Logout</h2>
+            <button onClick={logoutHandler}>Logout</button>
           ) : (
-            <h2 onClick={() => navigate("/login")}>Login</h2>
+            <button onClick={() => navigate("/login")}>Login</button>
           )}
           <div className="divider"></div>
           <div>

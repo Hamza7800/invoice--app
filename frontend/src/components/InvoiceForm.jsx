@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Section } from "../styles/invoiceFormStyles";
 import arrowBack from "../assets/icon-arrow-left.svg";
 import {
@@ -29,6 +29,10 @@ const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
       items: editInvoice ? editInvoice.items : [],
     },
   });
+  const { reset } = methods;
+  useEffect(() => {
+    reset();
+  }, [showForm, reset]);
 
   const [invoice, { isLoading }] = useCreateInvoiceMutation();
   const [updateInvoice, { isLoading: updateLoading }] =
@@ -45,14 +49,12 @@ const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
       (total, item) => total + item.total,
       0
     );
-    console.log(userInfo);
 
     try {
       await invoice({ ...data, total: overallTotal, user: userInfo._id });
       refetch();
       toast.success("Invoice created successfully");
     } catch (err) {
-      console.log(err?.data?.message);
       toast.error(err?.data?.message || err.error);
     }
   };
@@ -60,7 +62,6 @@ const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
   const inputFieldsValues = methods.watch();
 
   const handleDraftInvoice = (e) => {
-    e.preventDefault();
     const filledFormdata = generateFilledData(
       formData,
       inputFieldsValues,
@@ -103,7 +104,7 @@ const InvoiceForm = ({ showForm, setShowForm, editInvoice, isEditing }) => {
     const filledFormdata = generateFilledData(
       editInvoice,
       inputFieldsValues,
-      "paid",
+      "pending",
       editInvoice.customId
     );
     saveEditInvoice(filledFormdata);

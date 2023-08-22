@@ -31,7 +31,11 @@ const HomePage = () => {
 
   return (
     <Home>
-      {error ? <>Error</> : isLoading ? <FullScreenLoader /> : null}
+      {error ? (
+        <h2 className="error">{error?.data?.message}</h2>
+      ) : isLoading ? (
+        <FullScreenLoader />
+      ) : null}
       <ActionBar setShowForm={setShowForm} />
       <Invoices />
       <InvoiceForm showForm={showForm} setShowForm={setShowForm} />

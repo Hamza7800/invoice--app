@@ -12,8 +12,8 @@ function Items({ index, field, remove, control, invoice }) {
   });
 
   const calculateItemTotal = (item) => {
-    const qty = parseFloat(item.quantity) || 0;
-    const price = parseFloat(item.price) || 0;
+    const qty = parseFloat(item?.quantity) || 0;
+    const price = parseFloat(item?.price) || 0;
     return qty * price;
   };
 

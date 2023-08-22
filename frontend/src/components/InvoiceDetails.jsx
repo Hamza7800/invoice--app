@@ -40,7 +40,7 @@ const InvoiceDetails = ({
         </div>
 
         <section className="container">
-          <FlexContainer direction={"column"}>
+          <div className="id_address">
             <div>
               <div>
                 <p className="id">
@@ -51,13 +51,13 @@ const InvoiceDetails = ({
               </div>
             </div>
 
-            <div className="subtitle">
+            <div className="subtitle adrs">
               <p>{invoice?.senderAddress?.street}</p>
               <p>{invoice?.senderAddress?.city}</p>
               <p>{invoice?.senderAddress?.postCode}</p>
               <p>{invoice?.senderAddress?.country}</p>
             </div>
-          </FlexContainer>
+          </div>
 
           <FlexContainer>
             <div className="date">
